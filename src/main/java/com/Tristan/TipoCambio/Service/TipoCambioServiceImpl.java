@@ -2,6 +2,7 @@ package com.Tristan.TipoCambio.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,9 +85,51 @@ public class TipoCambioServiceImpl implements ITipoCambioService {
 	
 	
 	@Override
+	@Transactional
 	public ResponseEntity<TipoCambioResponseRest> actualizar(TipoCambio tipoCambio, Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Log.info("Inicio método editar tipo cambio");
+		
+		TipoCambioResponseRest response = new TipoCambioResponseRest();
+		List<TipoCambio> list = new ArrayList<>();
+		
+		try {
+			
+			Optional<TipoCambio> tipoCambioB = tipoCambioDao.findById(id);
+			
+			if (tipoCambioB.isPresent()) {
+				tipoCambioB.get().setMonto(tipoCambio.getMonto());
+				tipoCambioB.get().setModenaOrigen(tipoCambio.getModenaOrigen());
+				tipoCambioB.get().setModenaDestino(tipoCambio.getModenaDestino());
+				tipoCambioB.get().setTasa(tipoCambio.getTasa());
+				
+				TipoCambio tipoCambioActualizada = tipoCambioDao.save(tipoCambioB.get());
+				
+				if (tipoCambioActualizada != null) {
+					response.setMetada("Respuesta ok", "00", "Tipo cambio actualizada");
+					list.add(tipoCambioActualizada);
+					response.getTipoCambioResponse().setTipoCambio(list);
+				} else {
+					Log.error("Error en actualizar el tipo cambio");
+					response.setMetada("Respuesta no ok", "-1", "Tipo cambio no actualizada");
+					return new ResponseEntity<TipoCambioResponseRest>(response, HttpStatus.BAD_REQUEST);
+				}
+				
+			} else {
+				Log.error("Error en actualizar el tipo de cambio");
+				response.setMetada("Respuesta no ok", "-1", "Tipo de cambio no actualizada");
+				return new ResponseEntity<TipoCambioResponseRest>(response, HttpStatus.NOT_FOUND);
+			}
+			
+			
+		} catch (Exception e) {
+			Log.error("Error en actualizar el tipo cambio", e.getMessage());
+			e.getStackTrace();
+			response.setMetada("Respuesta no ok", "-1", "Tipo cambio no actualizada");
+			return new ResponseEntity<TipoCambioResponseRest>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<TipoCambioResponseRest>(response, HttpStatus.OK);
 	}
 	
 	

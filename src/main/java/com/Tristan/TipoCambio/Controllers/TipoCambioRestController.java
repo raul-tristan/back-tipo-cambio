@@ -3,7 +3,9 @@ package com.Tristan.TipoCambio.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +30,12 @@ public class TipoCambioRestController {
 	@PostMapping("/tipo_cambio")
 	public ResponseEntity<TipoCambioResponseRest> crear(@RequestBody TipoCambio request) {
 		ResponseEntity<TipoCambioResponseRest> response = service.crear(request);
+		return response;
+	}
+	
+	@PutMapping("/tipo_cambio/{id}") 
+	public ResponseEntity<TipoCambioResponseRest> actualizar(@RequestBody TipoCambio request, @PathVariable Long id) {
+		ResponseEntity<TipoCambioResponseRest> response = service.actualizar(request, id);
 		return response;
 	}
 	
