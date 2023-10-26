@@ -12,8 +12,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.Tristan.TipoCambio.Dao.ITipoCambioDao;
+import com.Tristan.TipoCambio.Dao.ITransaccionDao;
 import com.Tristan.TipoCambio.Response.TipoCambioResponseRest;
 import com.Tristan.TipoCambio.model.TipoCambio;
+import com.Tristan.TipoCambio.model.Transaccion;
 
 import jakarta.transaction.Transactional;
 
@@ -24,6 +26,9 @@ public class TipoCambioServiceImpl implements ITipoCambioService {
 	
 	@Autowired
 	private ITipoCambioDao tipoCambioDao;
+	
+	@Autowired
+	private ITransaccionDao transaccionDao;
 	
 	@Override
 	@Transactional
@@ -66,6 +71,11 @@ public class TipoCambioServiceImpl implements ITipoCambioService {
 			if (tipoCambioGuardada != null) {
 				list.add(tipoCambioGuardada);
 				response.getTipoCambioResponse().setTipoCambio(list);
+				
+				Transaccion transaccion = new Transaccion();
+				transaccion.setGuardarPrueba(tipoCambioGuardada.getModenaOrigen());
+				transaccion.setMontoConvertido(tipoCambioGuardada.getMonto() * tipoCambio.getTasa());
+				transaccionDao.save(transaccion);
 			} else {
 				Log.error("Error en grabar el tipo cambio");
 				response.setMetada("Respuesta no ok", "-1", "Tipo cambio no guardado");

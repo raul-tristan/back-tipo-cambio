@@ -20,7 +20,7 @@ public class TipoCambio implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 	
 	@Column(length = 8)
 	private double monto;
@@ -36,11 +36,11 @@ public class TipoCambio implements Serializable {
 
 	
 	
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -75,5 +75,9 @@ public class TipoCambio implements Serializable {
 	public void setTasa(double tasa) {
 		this.tasa = tasa;
 	}
+
+	
+	
+	
 		
 }
