@@ -1,5 +1,6 @@
 package com.Tristan.TipoCambio.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -46,6 +47,46 @@ public class TipoCambioServiceImpl implements ITipoCambioService {
 		}
 		
 		return new ResponseEntity<TipoCambioResponseRest>(response, HttpStatus.OK);
+	}
+
+	@Override
+	@Transactional
+	public ResponseEntity<TipoCambioResponseRest> crear(TipoCambio tipoCambio) {
+
+		Log.info("Inicio método crear tipoCambio");
+		
+		TipoCambioResponseRest response = new TipoCambioResponseRest();
+		List<TipoCambio> list = new ArrayList<>();
+		
+		try {
+			
+			TipoCambio tipoCambioGuardada = tipoCambioDao.save(tipoCambio);
+			
+			if (tipoCambioGuardada != null) {
+				list.add(tipoCambioGuardada);
+				response.getTipoCambioResponse().setTipoCambio(list);
+			} else {
+				Log.error("Error en grabar el tipo cambio");
+				response.setMetada("Respuesta no ok", "-1", "Tipo cambio no guardado");
+				return new ResponseEntity<TipoCambioResponseRest>(response, HttpStatus.BAD_REQUEST);
+			}
+			
+		} catch (Exception e) {
+			Log.error("Error en grabar el tipo de cambio");
+			response.setMetada("Respuesta no ok", "-1", "Error en grabar tipo de cambio");
+			return new ResponseEntity<TipoCambioResponseRest>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		response.setMetada("Respuesta ok", "00", "Tipo cambio creada");
+		return new ResponseEntity<TipoCambioResponseRest>(response, HttpStatus.OK);
+	}
+
+	
+	
+	@Override
+	public ResponseEntity<TipoCambioResponseRest> actualizar(TipoCambio tipoCambio, Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
