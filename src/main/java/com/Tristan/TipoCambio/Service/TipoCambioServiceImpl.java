@@ -73,8 +73,8 @@ public class TipoCambioServiceImpl implements ITipoCambioService {
 				response.getTipoCambioResponse().setTipoCambio(list);
 				
 				Transaccion transaccion = new Transaccion();
-				transaccion.setGuardarPrueba(tipoCambioGuardada.getModenaOrigen());
 				transaccion.setMontoConvertido(tipoCambioGuardada.getMonto() * tipoCambio.getTasa());
+	            transaccion.setTipocambio(tipoCambio); // Establece la relación
 				transaccionDao.save(transaccion);
 			} else {
 				Log.error("Error en grabar el tipo cambio");

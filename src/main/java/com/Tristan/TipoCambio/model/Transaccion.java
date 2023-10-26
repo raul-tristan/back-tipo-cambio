@@ -29,14 +29,11 @@ public class Transaccion implements Serializable{
 	@Column(length = 10)
 	private double montoConvertido;
 	
-	@Column(length = 10)
-	private String guardarPrueba;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private TipoCambio tipocambio;
 
-	
 	public Long getId() {
 		return id;
 	}
@@ -51,14 +48,6 @@ public class Transaccion implements Serializable{
 
 	public void setMontoConvertido(double montoConvertido) {
 		this.montoConvertido = montoConvertido;
-	}
-
-	public String getGuardarPrueba() {
-		return guardarPrueba;
-	}
-
-	public void setGuardarPrueba(String guardarPrueba) {
-		this.guardarPrueba = guardarPrueba;
 	}
 
 	public TipoCambio getTipocambio() {
