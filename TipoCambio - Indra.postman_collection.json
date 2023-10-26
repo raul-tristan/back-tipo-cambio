@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "82665756-11bb-46d5-a7df-5937229177e1",
+		"_postman_id": "8f958e8c-7d32-401a-b933-4118e07e53ea",
 		"name": "TipoCambio - Indra",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23795663",
-		"_collection_link": "https://gold-shuttle-249290.postman.co/workspace/f206cace-a85e-477c-8e56-f5c0ffde2f83/collection/23795663-82665756-11bb-46d5-a7df-5937229177e1?action=share&source=collection_link&creator=23795663"
+		"_collection_link": "https://gold-shuttle-249290.postman.co/workspace/My-Workspace~f206cace-a85e-477c-8e56-f5c0ffde2f83/collection/23795663-8f958e8c-7d32-401a-b933-4118e07e53ea?action=share&source=collection_link&creator=23795663"
 	},
 	"item": [
 		{
@@ -28,7 +28,7 @@
 			"response": []
 		},
 		{
-			"name": "*Crear - Tipo Cambio",
+			"name": "Crear - Tipo Cambio*",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -63,7 +63,7 @@
 			"response": []
 		},
 		{
-			"name": "*Editar - Tipo Cambio",
+			"name": "Editar - Tipo Cambio*",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -99,7 +99,7 @@
 			"response": []
 		},
 		{
-			"name": "Listar - Transaccion",
+			"name": "Listar - Transaccion*",
 			"request": {
 				"method": "GET",
 				"header": [],

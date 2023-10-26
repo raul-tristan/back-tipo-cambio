@@ -1,0 +1,30 @@
+- Se trabajó 2 tablas para la BD: TipoCambio y Transacción
+
+- Tabla TipoCambio
+    id
+    monto
+    modenaOrigen
+    modenaDestino
+    tasa
+
+- Tabla Transacción
+    id
+    montoConvertido
+    tipocambio -> llave foranea
+
+
+- API REST
+    Listar tabla TipoCambio
+    Crear tabla TipoCambio*
+    Editar tabla TipoCambio*
+    Listar tabla transaccion*
+
+- Prueba técnica
+    Crear tabla TipoCambio*:
+    La API debe recibir el valor “monto”, “moneda origen”, “moneda destino”. 
+
+    Listar tabla transaccion*
+    La API debe devolver el “monto”, “monto con tipo de cambio”, “moneda origen”, “moneda destino” y “tipo de cambio”.
+    
+    Editar tabla TipoCambio*
+    Crear un POST para actualizar el valor del tipo de cambio. 
