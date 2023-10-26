@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "82665756-11bb-46d5-a7df-5937229177e1",
+		"name": "TipoCambio - Indra",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23795663",
+		"_collection_link": "https://gold-shuttle-249290.postman.co/workspace/f206cace-a85e-477c-8e56-f5c0ffde2f83/collection/23795663-82665756-11bb-46d5-a7df-5937229177e1?action=share&source=collection_link&creator=23795663"
+	},
+	"item": [
+		{
+			"name": "Listar - Tipo Cambio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/tipo_cambio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"tipo_cambio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "*Crear - Tipo Cambio",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"monto\": 100.00,\r\n    \"modenaOrigen\": \"Sol\",\r\n    \"modenaDestino\": \"Dolar\",\r\n    \"tasa\": 0.26\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/tipo_cambio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"tipo_cambio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "*Editar - Tipo Cambio",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"monto\": 66000.0,\r\n    \"modenaOrigen\": \"Dolares\",\r\n    \"modenaDestino\": \"Euro\",\r\n    \"tasa\": 0.04\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/tipo_cambio/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"tipo_cambio",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar - Transaccion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/transaccion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"transaccion"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
